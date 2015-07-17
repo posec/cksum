@@ -39,7 +39,7 @@ func main() {
 		s = sum(P, s, 0)
 	}
 	for a := nBytes; a != 0; {
-		var x byte = byte(nBytes & 0xff)
+		var x byte = byte(a & 0xff)
 		s = sum(P, s, x)
 		a >>= 8
 	}
