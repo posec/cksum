@@ -17,7 +17,7 @@ func main() {
 	in := os.Stdin
 
 	for {
-		buffer := make([]byte, 1)
+		buffer := make([]byte, 10000)
 		count, err := in.Read(buffer)
 		if err == io.EOF {
 			break
