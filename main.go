@@ -28,9 +28,8 @@ func main() {
 		}
 		nBytes += uint64(count)
 
-		for i := 0; i < count; i += 1 {
-			s = sum(P, s, buffer[i])
-		}
+		s = sumBuffer(P, s, buffer[:count])
+
 	}
 
 	// fmt.Println("raw", s)
@@ -47,6 +46,13 @@ func main() {
 		s = sum(P, s, 0)
 	}
 	fmt.Println(^s, nBytes)
+}
+
+func sumBuffer(P uint32, s uint32, buffer []byte) uint32 {
+	for i := 0; i < len(buffer); i += 1 {
+		s = sum(P, s, buffer[i])
+	}
+	return s
 }
 
 // p: divisor polynomial (coefficient x^31 to X^0; coefficient
