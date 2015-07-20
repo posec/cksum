@@ -60,11 +60,7 @@ func sum(p uint32, s uint32, b byte) uint32 {
 		} else {
 			s = (s << 1)
 		}
-		if b&0x80 != 0 {
-			s ^= 1
-		}
-		b <<= 1
 	}
 
-	return s
+	return s ^ uint32(b)
 }
