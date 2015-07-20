@@ -48,9 +48,9 @@ func main() {
 	fmt.Println(^s, nBytes)
 }
 
-func sumBuffer(P uint32, s uint32, buffer []byte) uint32 {
+func sumBuffer(p uint32, s uint32, buffer []byte) uint32 {
 	for i := 0; i < len(buffer); i += 1 {
-		s = sum(P, s, buffer[i])
+		s = sum(p, s, buffer[i])
 	}
 	return s
 }
