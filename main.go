@@ -42,9 +42,9 @@ func main() {
 		s = sum(P, s, x)
 		a >>= 8
 	}
-	for i := 0; i < 4; i += 1 {
-		s = sum(P, s, 0)
-	}
+	//	for i := 0; i < 4; i += 1 {
+	//		s = sum(P, s, 0)
+	//	}
 	fmt.Println(^s, nBytes)
 }
 
@@ -60,6 +60,7 @@ func sumBuffer(p uint32, s uint32, buffer []byte) uint32 {
 // s: current sum
 // b: additional byte
 func sum(p uint32, s uint32, b byte) uint32 {
+	s ^= (uint32(b) << 24)
 	for i := 0; i < 8; i += 1 {
 		if s&(1<<31) != 0 {
 			s = (s << 1) ^ p
@@ -68,5 +69,5 @@ func sum(p uint32, s uint32, b byte) uint32 {
 		}
 	}
 
-	return s ^ uint32(b)
+	return s
 }
